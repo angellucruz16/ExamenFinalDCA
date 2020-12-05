@@ -1,5 +1,6 @@
 package modelo;
 
+import controlador.MainController;
 import processing.core.PApplet;
 
 public class Objeto {
@@ -11,8 +12,10 @@ public class Objeto {
 	private int posX;
 	private int posY;
 	PApplet sketch;
+	private MainController controlador;
 
-	public Objeto(int id, int direccion, int posInicialX, int posInicialY, int posX, int posY, PApplet sketch) {
+	public Objeto(int id, int direccion, int posInicialX, int posInicialY, int posX, int posY, PApplet sketch,
+			MainController controlador) {
 		this.id = id;
 		this.direccion = direccion;
 		this.posInicialX = posInicialX;
@@ -20,6 +23,11 @@ public class Objeto {
 		this.posX = posX;
 		this.posY = posY;
 		this.sketch = sketch;
+		this.controlador = controlador;
+	}
+
+	public MainController getControlador() {
+		return controlador;
 	}
 
 	public int getDireccion() {

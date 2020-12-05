@@ -6,16 +6,20 @@ public class Partida implements Comparable<Partida> {
 
 	private Date fechaHora;
 	private int duracion;
+	private int id;
 
-	public Partida(Date fechaHora) {
+	public Partida(int id, Date fechaHora) {
+		System.out.println("Nueva partida iniciada");
 		this.fechaHora = fechaHora;
 		this.duracion = 0;
+		this.id = id;
 	}
 
 	@Override
 	public int compareTo(Partida o) {
-		// TODO Auto-generated method stub
-		return 0;
+		int last = this.fechaHora.compareTo(o.fechaHora);
+		// Sorting by first name if last name is same d
+		return last == 0 ? this.fechaHora.compareTo(o.fechaHora) : last;
 	}
 
 	public int getDuracion() {
@@ -24,6 +28,10 @@ public class Partida implements Comparable<Partida> {
 
 	public Date getFechaHora() {
 		return fechaHora;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public int setDuracion() {

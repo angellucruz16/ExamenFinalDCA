@@ -2,6 +2,7 @@ package modelo;
 
 import java.util.Random;
 
+import controlador.MainController;
 import processing.core.PApplet;
 
 public class Carro extends Objeto implements Runnable {
@@ -13,8 +14,8 @@ public class Carro extends Objeto implements Runnable {
 	private int color;
 	private Random random;
 
-	public Carro(int id, int direccion, int posInicialX, int posInicialY, PApplet sketch) {
-		super(id, direccion, posInicialX, posInicialY, posInicialX, posInicialY, sketch);
+	public Carro(int id, int direccion, int posInicialX, int posInicialY, PApplet sketch, MainController controlador) {
+		super(id, direccion, posInicialX, posInicialY, posInicialX, posInicialY, sketch, controlador);
 		count = 0;
 		random = new Random();
 		color = random.nextInt(5) + 1;
@@ -63,12 +64,27 @@ public class Carro extends Objeto implements Runnable {
 
 		}
 		sketch.rect(getPosX(), getPosY(), 40, 20);
-
 	}
 
 	@Override
 	public void run() {
 		render();
+		try {
+			verPersonaje();
+		} catch (JuegoPerdidoException e) {
+			System.out.println(e.getMessage());
+			getControlador().perder();
+		}
+	}
+
+	public void verPersonaje() throws JuegoPerdidoException {
+
+		double distancia = Math.hypot(getPosX() - getControlador().getPersonaje().getPosX(),
+				getPosY() - getControlador().getPersonaje().getPosY());
+		if (distancia < 20) {
+			throw new JuegoPerdidoException();
+		}
+
 	}
 
 }
