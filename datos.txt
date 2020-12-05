@@ -1,0 +1,8 @@
+personaje,0,550,40
+carro,1,20,100
+carro,1,120,100
+carro,1,220,100
+carro,1,320,100
+carro,1,420,100
+carro,1,520,100
+carro,1,620,100

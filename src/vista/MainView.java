@@ -16,6 +16,12 @@ public class MainView  extends PApplet {
 	@Override
 	public void draw() {
 		background(255);
+		this.fill(GRAY);
+		this.rect(0, 70, 1200, 100);
+		this.rect(0, 270, 1200, 100);
+		this.rect(0, 470, 1200, 100);
+		this.rect(0, 670, 1200, 100);
+
 	}
 	
 	@Override
